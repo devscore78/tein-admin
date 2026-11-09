@@ -271,9 +271,9 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   font-weight: 500; animation: rise .2s ease-out;
 }
 .toast .ic { flex: none; }
-.toast.is-ok .ic { color: #6ACB86; }
-.toast.is-bad .ic { color: #FF7469; }
-:root:not([data-theme="dark"]) .toast.is-ok .ic { color: #5FBF7B; }
+.toast.is-ok .ic { color: #7FD497; }
+.toast.is-bad .ic { color: #FF9189; }
+:root:not([data-theme="dark"]) .toast.is-ok .ic { color: #3E9B5A; }
 .tip {
   position: fixed; z-index: 300; pointer-events: none; padding: 7px 11px; border-radius: 8px;
   background: var(--ink); color: var(--bg); font-size: 12px; line-height: 1.35; box-shadow: var(--shadow-pop); white-space: nowrap;

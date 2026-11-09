@@ -25,12 +25,13 @@
       if (!rail || !bar) return;
       rail.outerHTML = T.sidebar.html(current);
       bar.outerHTML = T.topbar.html();
+      const bn = document.getElementById('bnav-wrap'); if (bn) bn.outerHTML = T.bottomnav.html(current);
     }
   };
 
   function mountShell() {
     app.innerHTML = '<div class="shell">' + T.sidebar.html(current) + '<div class="main">' + T.topbar.html() +
-      '<main class="content" id="view" tabindex="-1"></main></div></div><div class="drawer-scrim" data-act="drawer-close"></div>';
+      '<main class="content" id="view" tabindex="-1"></main></div></div><div class="drawer-scrim" data-act="drawer-close"></div>' + T.bottomnav.html(current);
     route();
   }
 
@@ -41,7 +42,7 @@
     if (ROUTES.indexOf(id) < 0) id = 'overview';
     current = id;
     const screen = T.screens[id];
-    html.classList.remove('drawer-open');
+    html.classList.remove('drawer-open', 'qa-open');
     document.querySelectorAll('.tip').forEach(t => { t.style.display = 'none'; });
     /* a fresh container per page, so one screen's event listeners never leak into the next */
     const view = old.cloneNode(false);
@@ -61,7 +62,7 @@
     document.querySelectorAll('.menu').forEach(m => { m.hidden = true; });
     document.querySelectorAll('[data-menu]').forEach(b => b.setAttribute('aria-expanded', 'false'));
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenus(); html.classList.remove('drawer-open'); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenus(); html.classList.remove('drawer-open', 'qa-open'); } });
 
   /* ---------- global clicks ---------- */
   document.addEventListener('click', e => {
@@ -81,6 +82,8 @@
     else if (act === 'collapse') { html.classList.toggle('rail-collapsed'); store.set('tein-rail', html.classList.contains('rail-collapsed') ? '1' : '0'); }
     else if (act === 'drawer-open') html.classList.add('drawer-open');
     else if (act === 'drawer-close') html.classList.remove('drawer-open');
+    else if (act === 'qa-toggle') html.classList.toggle('qa-open');
+    else if (act === 'qa-close') html.classList.remove('qa-open');
     else if (act === 'notif-read') { T.db.notifications.forEach(n => { n.unread = false; }); T.chrome.refresh(); }
     else if (act === 'role-toggle') {
       closeMenus();

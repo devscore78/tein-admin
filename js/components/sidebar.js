@@ -35,7 +35,10 @@
         '<div class="rail-brand"><a class="wordmark" href="#overview"><b>TEIN</b><small>Admin</small></a>' +
         '<button class="btn-icon rail-close" type="button" data-act="drawer-close" aria-label="Close menu">' + I('x', 20) + '</button></div>' +
         '<nav>' + nav + '</nav>' +
-        '<div class="rail-foot"><button class="rail-collapse" type="button" data-act="collapse" title="Collapse sidebar">' + I('panel', 19) + '<span>Collapse</span></button></div></aside>';
+        '<div class="rail-foot"><button class="rail-collapse" type="button" data-act="collapse" title="Collapse sidebar">' + I('panel', 19) + '<span>Collapse</span></button></div>' +
+        '<div class="rail-actions"><a class="rail-btn is-green" href="#payments">Record payment</a>' +
+        '<button class="rail-btn is-red" type="button" data-act="logout">Sign out</button>' +
+        '<div class="rail-chips"><button type="button" data-act="theme">Theme</button><button type="button" data-act="role-toggle">Preview</button></div></div></aside>';
     }
   };
 })(window.TEIN = window.TEIN || {});
